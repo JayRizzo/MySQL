@@ -14,22 +14,22 @@
 DROP TABLE IF EXISTS `MyPeople`.`country`;
 CREATE TABLE `MyPeople`.`country` (
     `pik`                       INT             NOT NULL AUTO_INCREMENT,
-    `country`                   varchar(256)    DEFAULT NULL,
-    `country_code`              varchar(256)    DEFAULT NULL,
-    `iso_code2`                 char(2)         DEFAULT NULL,
-    `iso_code3`                 char(3)         DEFAULT NULL,
+    `country`                   VARCHAR(256)    DEFAULT NULL,
+    `country_code`              VARCHAR(256)    DEFAULT NULL,
+    `iso_code2`                 CHAR(2)         DEFAULT NULL,
+    `iso_code3`                 CHAR(3)         DEFAULT NULL,
     `population`                BIGINT          DEFAULT NULL,
     `area_km2`                  BIGINT          DEFAULT NULL,
-    `gdpusd`                    BIGINT          DEFAULT NULL,
-    `created_date`              datetime        NOT NULL DEFAULT CURRENT_TIMESTAMP                             COMMENT 'Creation Date Of Record In A DateTime Format.',
-    `last_modified_date`        datetime        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Modification Date Of Record Being Changed In A DateTime Format.',
-    `created_timestamp`         timestamp       NOT NULL DEFAULT CURRENT_TIMESTAMP                             COMMENT 'Creation Date Of Record In A Timestamp Format.',
-    `lastmodified_timestamp`    timestamp       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Modification Date Of Record Being Changed In A Timestamp Format.',
+    `gdp_usd`                   BIGINT          DEFAULT NULL,
+    `created_date`              DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP                             COMMENT 'Creation Date Of Record In A DateTime Format.',
+    `last_modified_date`        DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Modification Date Of Record Being Changed In A DateTime Format.',
+    `created_timestamp`         TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP                             COMMENT 'Creation Date Of Record In A Timestamp Format.',
+    `lastmodified_timestamp`    TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Modification Date Of Record Being Changed In A Timestamp Format.',
     PRIMARY KEY (`pik`)
 )   ENGINE=InnoDB
     DEFAULT CHARSET=utf8mb4
     COLLATE=utf8mb4_0900_ai_ci
-    COMMENT 'Phone Table.'
+    COMMENT 'Country Code Table. Tracking of International Phone Extensions.'
 ;
 
 # =====================================================================================================================
@@ -42,7 +42,7 @@ ADD UNIQUE KEY `idx_country_c_cc_iso2_iso3` (`country`,                  `countr
 # Country Data
 # =====================================================================================================================
 INSERT INTO `MyPeople`.`country` (
-    `country`,                  `country_code`,  `iso_code2`,   `iso_code3`,        `population`,      `area_km2`,                            `gdpusd`)
+    `country`,                  `country_code`,  `iso_code2`,   `iso_code3`,        `population`,      `area_km2`,                           `gdp_usd`)
 VALUES
 ("Afghanistan",                         "93",           "AF",         "AFG",          "29121286",        "647500",                       "20650000000"),
 ("Albania",                             "355",          "AL",         "ALB",           "2986952",         "28748",                       "12800000000"),
