@@ -1,26 +1,21 @@
-# =====================================================================================================================
+INSERT INTO `MyPeople`.`country` (`country`, `country_code`, `iso_code2`, `iso_code3`, `population`,   `area_km2`,                            `gdpusd`)
 # Created Syst: macOS Monterey 12.5 (21G72) Kernel: Darwin 21.6.0
 # Created By  : Jeromie Kirchoff
 # Created Date: Sun Aug  7 10:03:41 2022 CDT
 # Last ModDate: Tue Aug  9 15:10:01 2022 CDT
 # =====================================================================================================================
-# Notes: Country Code Table
-# Data Pulled From:  https://countrycode.org/
-# =====================================================================================================================
-
-# =====================================================================================================================
-# Country
+# Notes: Country Code Table  # Data Pulled From:  https://countrycode.org/
 # =====================================================================================================================
 DROP TABLE IF EXISTS `MyPeople`.`country`;
 CREATE TABLE `MyPeople`.`country` (
     `pik`                       INT             NOT NULL AUTO_INCREMENT,
-    `country`                   VARCHAR(256)    DEFAULT NULL,
-    `country_code`              VARCHAR(256)    DEFAULT NULL,
-    `iso_code2`                 CHAR(2)         DEFAULT NULL,
-    `iso_code3`                 CHAR(3)         DEFAULT NULL,
-    `population`                BIGINT          DEFAULT NULL,
-    `area_km2`                  BIGINT          DEFAULT NULL,
-    `gdp_usd`                   BIGINT          DEFAULT NULL,
+    `country`                   VARCHAR(256)    NOT NULL NULL,
+    `country_code`              VARCHAR(256)    NOT NULL NULL,
+    `iso_code2`                 CHAR(2)         NOT NULL NULL,
+    `iso_code3`                 CHAR(3)         NOT NULL NULL,
+    `population`                BIGINT          NOT NULL NULL DEFAULT "0",
+    `area_km2`                  BIGINT          NOT NULL NULL DEFAULT "0",
+    `gdp_usd`                   BIGINT          NOT NULL NULL DEFAULT "0",
     `created_date`              DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP                             COMMENT 'Creation Date Of Record In A DateTime Format.',
     `last_modified_date`        DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Modification Date Of Record Being Changed In A DateTime Format.',
     `created_timestamp`         TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP                             COMMENT 'Creation Date Of Record In A Timestamp Format.',
@@ -40,9 +35,7 @@ ADD UNIQUE KEY `idx_country_c_cc_iso2_iso3` (`country`,                  `countr
 
 # =====================================================================================================================
 # Country Data
-# =====================================================================================================================
-INSERT INTO `MyPeople`.`country` (
-    `country`,                  `country_code`,  `iso_code2`,   `iso_code3`,        `population`,      `area_km2`,                           `gdp_usd`)
+INSERT INTO `MyPeople`.`country` (`country`, `country_code`, `iso_code2`, `iso_code3`, `population`,   `area_km2`,                           `gdp_usd`)
 VALUES
 ("Afghanistan",                         "93",           "AF",         "AFG",          "29121286",        "647500",                       "20650000000"),
 ("Albania",                             "355",          "AL",         "ALB",           "2986952",         "28748",                       "12800000000"),
@@ -288,3 +281,8 @@ VALUES
 ("Zambia",                              "260",          "ZM",         "ZMB",          "13460305",        "752614",                       "22240000000"),
 ("Zimbabwe",                            "263",          "ZW",         "ZWE",          "11651858",        "390580",                       "10480000000")
 ;
+
+# =====================================================================================================================
+# SHOW Data
+# =====================================================================================================================
+SELECT * FROM `MyPeople`.`country`;
